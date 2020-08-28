@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Hello World</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="systemjs-importmap">
+    {
+      "imports": {
+        "hello": "http://localhost:5001/public/hello.js",
+        "hello-react" : "http://localhost:5002/hello-react.js",
+        "navigation" : "http://localhost:5003/navigation.js",
+        "react": "https://cdn.jsdelivr.net/npm/react@16.13.1/umd/react.production.min.js",
+        "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@16.13.1/umd/react-dom.production.min.js",
+        "lodash": "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"
+      }
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@1.16.0/dist/import-map-overrides.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/systemjs/dist/system.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/systemjs@6.4.0/dist/extras/named-exports.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/single-spa/5.5.3/umd/single-spa.dev.js"></script>
+ <script>
+    singleSpa.registerApplication(
+        "hello",
+        () => System.import('hello'),
+        ({ pathname }) => pathname === ('/')
+    );
+    singleSpa.registerApplication(
+      "hello-react",
+      () => System.import("hello-react"),
+      ({ pathname }) => pathname.startsWith("/react")
+    );
+    singleSpa.registerApplication(
+      "navigation",
+      () => System.import("navigation"),
+      () => true,
+    );
+    singleSpa.start();
+  </script>
+</head>
+<body>
+<div id="single-spa-application:navigation"></div>
+<div id="single-spa-application:hello-react"></div>
+</body>

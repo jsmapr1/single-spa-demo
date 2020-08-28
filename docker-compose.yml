@@ -1,0 +1,25 @@
+version: '3'
+services:
+  hello:
+    build:
+        context: ./hello
+    ports:
+     - "5001:5001"
+
+  hello-react:
+    build:
+        context: ./hello-react
+    ports:
+     - "5002:5001"
+
+  root:
+    build:
+      context: ./root
+    ports:
+     - "5555:5001"
+
+  navigation:
+    build:
+        context: ./navigation
+    ports:
+      - "5003:5001"

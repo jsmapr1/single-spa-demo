@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Hello World</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="systemjs-importmap">
+    {
+      "imports": {
+        "hello": "http://localhost:5001/public/hello.js",
+        "lodash": "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"
+      }
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/systemjs/dist/system.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@1.16.0/dist/import-map-overrides.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/systemjs@6.4.0/dist/extras/named-exports.min.js"></script>
+  <script type="systemjs-module" src="import:hello"></script>
+</head>
+<body>
+</body>
