@@ -10,7 +10,6 @@
       "imports": {
         "hello": "http://localhost:5001/public/hello.js",
         "hello-react" : "http://localhost:5002/hello-react.js",
-        "navigation" : "http://localhost:5003/navigation.js",
         "react": "https://cdn.jsdelivr.net/npm/react@16.13.1/umd/react.production.min.js",
         "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@16.13.1/umd/react-dom.production.min.js",
         "lodash": "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"
@@ -32,15 +31,8 @@
       () => System.import("hello-react"),
       ({ pathname }) => pathname.startsWith("/react")
     );
-    singleSpa.registerApplication(
-      "navigation",
-      () => System.import("navigation"),
-      () => true,
-    );
     singleSpa.start();
   </script>
 </head>
 <body>
-<div id="single-spa-application:navigation"></div>
-<div id="single-spa-application:hello-react"></div>
 </body>
