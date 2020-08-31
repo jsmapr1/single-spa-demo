@@ -26,13 +26,6 @@ function App() {
             <a
               href="/"
               style={link}
-              onClick={(evt) => {
-                const { history } = window;
-                const path = evt.currentTarget.value;
-
-                evt.preventDefault();
-                history.pushState({}, undefined, '/');
-              }}
             >
               Home
             </a>
@@ -41,13 +34,6 @@ function App() {
             <a
               href="/react"
               style={link}
-              onClick={(evt) => {
-                const { history } = window;
-                const path = evt.currentTarget.value;
-
-                evt.preventDefault();
-                history.pushState({}, undefined, '/react');
-              }}
             >
               react
             </a>

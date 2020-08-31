@@ -23,3 +23,8 @@ services:
         context: ./navigation
     ports:
       - "5003:5001"
+  shared:
+    build:
+        context: ./shared-data
+    ports:
+      - "5004:5001"
