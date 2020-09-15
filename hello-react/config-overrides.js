@@ -1,15 +1,22 @@
 module.exports = function override(config, env) {
-  if(env === 'production') {
-    config.entry = './src/single-spa-entry.js';
+  if (env === "production") {
+    config.entry = "./src/single-spa-entry.js";
     config.output = {
-        ...config.output,
-        filename: 'hello-react.js',
-        libraryTarget: 'system',
-      }
-    delete config.optimization
-    config.plugins = config.plugins.filter(plugin => plugin.constructor.name !== 'HtmlWebpackPlugin')
-    config.externals = ["single-spa", "shared-data", "react", "react-dom"];
+      ...config.output,
+      filename: "hello-react.js",
+      libraryTarget: "system",
+    };
+    delete config.optimization;
+    config.plugins = config.plugins.filter(
+      (plugin) => plugin.constructor.name !== "HtmlWebpackPlugin"
+    );
+    config.externals = [
+      "single-spa",
+      "@mfe-hello/shared-data",
+      "react",
+      "react-dom",
+    ];
     return config;
   }
-  return config
+  return config;
 };
