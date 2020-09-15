@@ -1,14 +1,18 @@
-import React from 'react';
-import { getSavedData, setSavedData } from 'shared-data';
+import React, { useEffect, useState } from "react";
+import { savedData, setSavedData } from "@mfe-hello/shared-data";
 
 export default function Data() {
-  return(
+  const [data, setData] = useState("");
+  useEffect(() => {
+    savedData.subscribe((cache) => setData(cache.saved));
+  }, []);
+  return (
     <div>
-      <div>{getSavedData()}</div>
+      <div>{data}</div>
       <label>
-        Set Data: 
-        <input onChange={e => setSavedData(e.target.value)} />
+        Set Data:
+        <input onChange={(e) => setSavedData(e.target.value)} />
       </label>
     </div>
-  )
+  );
 }

@@ -1,26 +1,30 @@
-import React from 'react';
-import './App.css';
-import { getSavedData } from 'shared-data';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import { savedData } from "@mfe-hello/shared-data";
 
 const header = {
-  backgroundColor: '#282c34',
+  backgroundColor: "#282c34",
   height: 150,
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-  fontSize: 'calc(10px + 2vmin)',
-  color: 'white',
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  fontSize: "calc(10px + 2vmin)",
+  color: "white",
 };
 
 const link = {
-  color: '#61dafb',
+  color: "#61dafb",
 };
 
 function App() {
+  const [data, setData] = useState("");
+  useEffect(() => {
+    savedData.subscribe((cache) => setData(cache.saved));
+  }, []);
   return (
     <div className="App">
-      <header style={header}>Navigation {getSavedData()}</header>
+      <header style={header}>Navigation {data}</header>
       <nav>
         <ul>
           <li>
@@ -32,7 +36,7 @@ function App() {
                 const path = evt.currentTarget.value;
 
                 evt.preventDefault();
-                history.pushState({}, undefined, '/');
+                history.pushState({}, undefined, "/");
               }}
             >
               Home
@@ -47,7 +51,7 @@ function App() {
                 const path = evt.currentTarget.value;
 
                 evt.preventDefault();
-                history.pushState({}, undefined, '/react');
+                history.pushState({}, undefined, "/react");
               }}
             >
               react
